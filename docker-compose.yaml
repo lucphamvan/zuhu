@@ -1,0 +1,24 @@
+version: "3.8"
+services:
+    zuhu-db:
+        container_name: zuhu-db
+        image: mysql:8.0
+        cap_add:
+            - SYS_NICE
+        environment:
+            MYSQL_ROOT_PASSWORD: 123456
+        ports:
+            - "3307:3306"
+        volumes:
+            - "./docker/db/data:/var/lib/mysql"
+            - "./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf"
+            - "./docker/db/sql:/docker-entrypoint-initdb.d"
+        restart: always
+    # zuhu-backend:
+    #     container_name: zuhu-backend
+    #     build: .
+    #     ports:
+    #         - 8000:8000
+    #     depends_on:
+    #         - zuhu-db
+    #     restart: always

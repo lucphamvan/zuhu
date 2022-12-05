@@ -1,0 +1,93 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "ZUHU API",
+        "description": ""
+    },
+    "host": "localhost:8000",
+    "basePath": "/api",
+    "schemes": ["http"],
+    "paths": {
+        "/fixtures": {
+            "get": {
+                "description": "API get list fixtures with pagination",
+                "parameters": [
+                    {
+                        "name": "offset",
+                        "in": "query",
+                        "type": "number",
+                        "description": "index of page/offset"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "type": "number",
+                        "description": "max number fixtures per page"
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "type": "number",
+                        "description": "the date use to query fixtures (miliseconds)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK. Return data with format { items : fixtures[], count: number }"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete all fixtures and it's relation record",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/fixtures/available-date": {
+            "get": {
+                "description": "API get list date have fixtures",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK. Return the list date in miliseconds at 0h/0m/0s. [1643648400000, 1643648400000]"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/generate-fixtures": {
+            "post": {
+                "description": "API genarate a random list fixtures",
+                "parameters": [
+                    {
+                        "name": "amount",
+                        "in": "query",
+                        "type": "number",
+                        "description": "amount of list"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        }
+    }
+}

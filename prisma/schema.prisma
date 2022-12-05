@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Tournament {
+  id        Int       @id @default(autoincrement())
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  fixtures  Fixture[]
+}
+
+model Team {
+  id        Int      @id @default(autoincrement())
+  name      String
+  logo      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  HomeTeamFixtures Fixture[] @relation("hometeam")
+  AwayTeamFixtures Fixture[] @relation("awayteam")
+}
+
+model Fixture {
+  id        Int            @id @default(autoincrement())
+  setupTime DateTime
+  status    FIXTURE_STATUS
+
+  HomeTeam      Team @relation("hometeam", fields: [homeTeamId], references: [id])
+  homeTeamId    Int
+  homeTeamScore Int  @default(0)
+
+  AwayTeam      Team @relation("awayteam", fields: [awayTeamId], references: [id])
+  awayTeamId    Int
+  awayTeamScore Int  @default(0)
+
+  Tournament   Tournament @relation(fields: [tournamentId], references: [id])
+  tournamentId Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+enum FIXTURE_STATUS {
+  NOT_START
+  LIVING
+  END
+}
