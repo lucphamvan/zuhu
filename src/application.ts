@@ -26,7 +26,7 @@ class Application {
         this.app.use(cors());
         this.app.use(cookie());
         this.app.use(morgan("dev"));
-        app.use("/doc", swaggerUi.serve, swaggerUi.setup(swaggerFile));
+        app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile));
     }
 
     /**connect all router */

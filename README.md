@@ -1,18 +1,13 @@
-# Insert test data
+# Swagger
 
--   run api /api/generate-fixtures?amount=x to create [x] fixtures
+[https://api-zuhu.denojs.info/swagger/](https://api-zuhu.denojs.info/swagger/)
 
-# Reset database
+# database
 
-```
-npm run db:reset
-```
+Describle in following folder
 
-# Testing
-
-```bash
-npm run test
-```
+-   **diagram**
+-   **prisma/schema.prisma**
 
 # Solution 1 : Run localhost with database from docker
 
@@ -30,7 +25,7 @@ npm run db:init
 npm run start:dev
 ```
 
--   access [http://localhost:8000/api/ping](http://localhost:8000/api/ping) to check api
+-   access [http://localhost:8000/swagger/](http://localhost:8000/swagger/) to check api
 
 # Solution 2 : Run locahost without database from docker
 
@@ -44,4 +39,24 @@ npm run db:init
 npm run start:dev
 ```
 
--   access [http://localhost:8000/api/ping](http://localhost:8000/api/ping) to check api
+-   access [http://localhost:8000/swagger/](http://localhost:8000/swagger/) to check api
+
+# Insert fixtures
+
+-   POST **/api/generate-fixtures?amount=x**
+
+# Delete fixtures
+
+-   DELETE **/api/fixtures**
+
+# Reset database
+
+```
+npm run db:reset
+```
+
+# Testing
+
+```bash
+npm run test
+```
