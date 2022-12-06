@@ -57,7 +57,7 @@ class Application {
      */
     public start() {
         this.app.listen(PORT, () => {
-            console.log(`check at http://localhost:${PORT}/api/ping`);
+            console.log(`check at http://localhost:${PORT}/swagger/`);
         });
     }
 
