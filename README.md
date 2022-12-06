@@ -41,9 +41,9 @@ npm run start:dev
 
 -   access [http://localhost:8000/swagger/](http://localhost:8000/swagger/) to check api
 
-# Insert fixtures
+# Insert fixtures for manual test
 
--   POST **/api/generate-fixtures?amount=x**
+-   POST **/api/generate-fixtures?amount=x** with x is amount of fixtures will create
 
 # Delete fixtures
 
